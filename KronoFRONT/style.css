@@ -1,0 +1,130 @@
+:root {
+      /* Cores extraídas diretamente da imagem do Red Hood */
+      --redhood-capacete: #e6194b;       /* Vermelho vibrante do capacete/peito */
+      --redhood-capacete-hover: #c40e3a; /* Vermelho um pouco mais escuro para hover */
+      --redhood-jaqueta: #913b3b;        /* Tom da jaqueta de couro */
+      --redhood-jaqueta-escura: #6e2727; /* Sombreamento da jaqueta */
+      --redhood-colete: #4a4e57;         /* Cinza do colete/armadura */
+      --redhood-colete-dark: #2e3138;    /* Cinza escuro de contorno */
+      
+      /* Tons de fundo e detalhes baseados na HQ */
+      --fundo-hq: #95a383;              /* Verde musgo de fundo da HQ */
+      --card-bg: #1c1d22;               /* Preto/Cinza bem escuro com traço de HQ */
+      --card-interior: #292a33;         /* Fundo dos inputs */
+      --texto-claro: #f4f5f0;           /* Branco levemente cremoso */
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--fundo-hq);
+      color: var(--texto-claro);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      border: 3px solid var(--redhood-jaqueta);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(230, 25, 75, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--redhood-capacete);
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      text-shadow: 2px 2px 0px var(--redhood-jaqueta-escura);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--texto-claro);
+      letter-spacing: 0.5px;
+    }
+
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--card-interior);
+      color: var(--texto-claro);
+      border: 2px solid var(--redhood-colete);
+      border-radius: 8px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--redhood-capacete);
+      box-shadow: 0 0 10px rgba(230, 25, 75, 0.5);
+    }
+
+    button {
+      background-color: var(--redhood-capacete);
+      color: white;
+      border: 2px solid var(--redhood-jaqueta-escura);
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: var(--redhood-capacete-hover);
+      box-shadow: 0 0 15px rgba(230, 25, 75, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* mensagem de bem vindo / erro */
+    #mensagem {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--redhood-capacete);
+      text-shadow: 1px 1px 0px #000;
+    }
+
+    /* galeria com as imagens */
+    .galeria {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .imagem-card {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 3px solid var(--redhood-colete);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      background-color: var(--card-interior);
+    }
+
+    .imagem-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }

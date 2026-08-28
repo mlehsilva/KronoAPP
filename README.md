@@ -16,10 +16,6 @@ package-lock.json
 
 5 no gitbash dentro de : desktop/api executo npm run start
 
-Que ótimo que deu certo! Para te ajudar a não esquecer e deixar o repositório organizado, preparei um modelo de **README.md** bem estruturado.
-
-Você pode copiar o conteúdo abaixo, criar um arquivo chamado `README.md` na raiz da pasta do seu projeto (`KronoAPP`) e colar lá dentro.
-
 # KronoAPP ⏱️
 
 > Breve descrição do KronoAPP (ex: Aplicativo de controle e gestão de tempo desenvolvido para...).

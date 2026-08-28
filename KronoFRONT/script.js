@@ -1,18 +1,20 @@
 const inputUpload = document.getElementById('uploadImg');
 const inputNome = document.getElementById("nome");
 const button = document.getElementById("btn");
+const avatarPreview = document.getElementById('avatar-preview'); // Referência para a tag img do preview
 
 let url_imagem = "";
 let nome = "";
 
-// Pega o arquivo de imagem selecionado e converte para Base64
+// Pega o arquivo de imagem selecionado, converte para Base64 E atualiza a visualização na hora
 inputUpload.addEventListener('change', function(event) {
     const arquivo = event.target.files[0];
 
     if (arquivo) {
         const leitor = new FileReader();
         leitor.onload = function(e) {
-            url_imagem = e.target.result; // String completa com a imagem
+            url_imagem = e.target.result; // String completa com a imagem (Base64)
+            avatarPreview.src = url_imagem; // Atualiza a imagem na tela instantaneamente!
             console.log("Imagem carregada com sucesso!");
         };
         leitor.readAsDataURL(arquivo);
@@ -23,7 +25,8 @@ inputUpload.addEventListener('change', function(event) {
 });
 
 // Evento de clique no botão Salvar Perfil
-button.addEventListener("click", async () => {
+button.addEventListener("click", async (e) => {
+    e.preventDefault(); // Evita que a página recarregue
     nome = inputNome.value.trim();
 
     // Validação básica
@@ -40,7 +43,6 @@ async function criar() {
     const novo = { "nome": nome, "url": url_imagem };
 
     try {
-        // CORRIGIDO: Rota alterada para /usuarios
         const resposta = await fetch('http://localhost:3000/usuarios', {
             method: 'POST',
             headers: {
@@ -54,11 +56,12 @@ async function criar() {
             console.log('Criado com sucesso:', resultado);
             
             // Exibir mensagem de sucesso na tela
-            document.getElementById('mensagem').innerText = "Perfil salvo com sucesso!";
+            const mensagemEl = document.getElementById('mensagem');
+            if (mensagemEl) mensagemEl.innerText = "Perfil salvo com sucesso!";
 
-            // Exibe a imagem recém-salva na galeria do HTML
-            if (url_imagem) {
-                const galeria = document.getElementById('galeria');
+            // Exibe a imagem recém-salva na galeria do HTML (se existir a galeria na página)
+            const galeria = document.getElementById('galeria');
+            if (url_imagem && galeria) {
                 galeria.innerHTML += `
                     <div class="imagem-card">
                         <img src="${url_imagem}" alt="Foto de ${nome}">
@@ -70,12 +73,18 @@ async function criar() {
             inputNome.value = "";
             inputUpload.value = "";
             url_imagem = "";
+            
+            // Opcional: Reseta a foto para o template padrão após salvar
+            // avatarPreview.src = "url_do_icone_padrao.svg"; 
+
         } else {
-            document.getElementById('mensagem').innerText = "Erro ao salvar perfil no servidor.";
+            const mensagemEl = document.getElementById('mensagem');
+            if (mensagemEl) mensagemEl.innerText = "Erro ao salvar perfil no servidor.";
         }
 
     } catch (error) {
         console.error("Erro ao enviar para o servidor:", error);
-        document.getElementById('mensagem').innerText = "Erro ao conectar com o servidor.";
+        const mensagemEl = document.getElementById('mensagem');
+        if (mensagemEl) mensagemEl.innerText = "Erro ao conectar com o servidor.";
     }
 }

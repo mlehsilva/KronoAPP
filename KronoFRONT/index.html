@@ -1,40 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krono - Maria Lety</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Meu Site</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>Cadastro</h1>
-  
-    <div class="form-group">
-      <label for="usuario">Nome do Usuário:</label>
-      <input type="text" id="nome" placeholder="Digite seu nome aqui...">
+    <!-- Menu Flutuante -->
+    <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre mim</a>
+        <a href="cadastro.html" style="color: #FF5C8A;">Cadastro</a>
+    </nav>
+
+    <!-- Card de Cadastro -->
+    <div class="container">
+        <h1>Criar Conta</h1>
+        
+        <form>
+            <!-- SEÇÃO DA FOTO DE PERFIL -->
+            <div class="avatar-upload">
+                <!-- Alterado o for para 'uploadImg' -->
+                <label for="uploadImg" class="avatar-label">
+                    <img id="avatar-preview" src="https://api.iconify.design/lucide:user.svg?color=%23ff85a2" alt="Foto de perfil">
+                    <div class="avatar-overlay"></div>
+                </label>
+                <!-- Adicionado o id="uploadImg" aqui -->
+                <input type="file" id="uploadImg" accept="image/*">
+                <span class="avatar-text">Escolha sua foto</span>
+            </div>
+
+            <div class="input-group">
+                <label for="nome">Seu Nome</label>
+                <input type="text" id="nome" placeholder="Ex: Letícia" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <!-- Adicionado o id="btn" aqui -->
+            <button type="submit" id="btn" class="button">Cadastrar ✨</button>
+        </form>
+
+        <p id="mensagem" style="margin-top: 15px; font-weight: bold; color: #FF5C8A;"></p>
+        <div id="galeria" class="galeria"></div>
+
+        <div class="login-link">
+            <p>Já tem uma conta? <a href="#">Entrar</a></p>
+        </div>
     </div>
-
-    <!-- Upload de Imagem Rosa -->
-    <div class="form-group">
-      <label for="uploadImg">Adicionar sua imagem:</label>
-      <input type="file" id="uploadImg" accept="image/*">
-    </div>
-
-    <button id="btn">Salvar Perfil</button>
-
-    <div id="mensagem"></div>
-
-    <!-- Exibição das Imagens -->
-    <div class="galeria" id="galeria">
-      <!-- Imagem Padrão Rosa -->
-      <div class="imagem-card">
-        <img src="https://i.pinimg.com/736x/14/0e/2a/140e2a06aaae0db9ce21e21b0bb767a1.jpg" alt="Estética Rosa">
-      </div>
-    </div>
-  </div>
-
-  <script src="./script.js"></script>
+    
+    <script src="script.js"></script>
 </body>
-</html>>
+</html>
